@@ -1,0 +1,28 @@
+<!-- usuarios.html -->
+{% extends 'base.html' %}
+{% block title %}
+Administrador
+{% endblock %}
+
+{% block content %}
+<h1>Lista de Productos</h1>
+<table>
+  <tr>
+      <th>ID de Producto</th>
+      <th>ID de Material</th>
+      <th>Nombre de Producto</th>
+      <th>Precio</th>
+      <th>Talla</th>
+  </tr>
+  {% for product in product %}
+  <tr>
+      <td>{{ product.id_product }}</td>
+      <td>{{ product.id_material }}</td>
+      <td>{{ product.name_product }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.size }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Productos
+{% endblock %}
+
+{% block content %}
+<h1>Lista de Productos</h1>
+    <li class="">
+        <a class="" href="{{ url_for('product.register') }}">Registrar Producto</a>
+    </li>
+    <table>
+      <tr>
+          <th>ID de Producto</th>
+          <th>ID de Material</th>
+          <th>Nombre de Producto</th>
+          <th>Precio</th>
+          <th>Talla</th>
+          <th>Opciones</th>
+      </tr>
+      {% for product in product %}
+      <tr>
+          <td>{{ product.id_product }}</td>
+          <td>{{ product.id_material }}</td>
+          <td>{{ product.name_product }}</td>
+          <td>{{ product.price }}</td>
+          <td>{{ product.size }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar nuevo Maquilero{% endblock %}
+
+{% block content %}
+    <h1>Registro</h1>
+    <form method="post" action="{{ url_for('maquilador.register') }}">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.name.label }}
+            {{ form.name(class="form-control") }}
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_pat.label }}
+            {{ form.ape_pat(class="form-control") }}
+            {% if form.ape_pat.errors %}
+                {% for error in form.ape_pat.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_mat.label }}
+            {{ form.ape_mat(class="form-control") }}
+            {% if form.ape_mat.errors %}
+                {% for error in form.ape_mat.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.direction.label }}
+            {{ form.direction(class="form-control") }}
+            {% if form.direction.errors %}
+                {% for error in form.direction.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        </div>
+    </form>
+{% endblock %}

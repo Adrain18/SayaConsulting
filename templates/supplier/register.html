@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar nuevo Proveedor{% endblock %}
+
+{% block content %}
+    <h1>Registro</h1>
+    <form method="post" action="{{ url_for('supplier.register') }}">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.name.label }}
+            {{ form.name(class="form-control") }}
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_pat.label }}
+            {{ form.ape_pat(class="form-control") }}
+            {% if form.ape_pat.errors %}
+                {% for error in form.ape_pat.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_mat.label }}
+            {{ form.ape_mat(class="form-control") }}
+            {% if form.ape_mat.errors %}
+                {% for error in form.ape_mat.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.direction.label }}
+            {{ form.direction(class="form-control") }}
+            {% if form.direction.errors %}
+                {% for error in form.direction.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_material.label }}
+            <select class="form-control" name="{{ form.id_material.name }}">
+                <option value="">Seleccionar tipo de material...</option>
+                {% for id_material, name_material in form.id_material.choices %}
+                    <option value="{{ id_material }}">{{ name_material }}</option>
+                {% endfor %}
+            </select>
+            {% if form.id_material.errors %}
+                {% for error in form.id_material.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+Telas
+{% endblock %}
+
+{% block content %}
+<h1>Lista de Telas</h1>
+    <li class="">
+        <a class="" href="{{ url_for('material.register') }}">Registrar Material</a>
+    </li>
+    <table>
+      <tr>
+          <th>ID de Material</th>
+          <th>Nombre de Material</th>
+          <th>Precio</th>
+          <th>Opciones</th>
+      </tr>
+      {% for type_of_material in type_of_material %}
+      <tr>
+          <td>{{ type_of_material.id_material }}</td>
+          <td>{{ type_of_material.name_material }}</td>
+          <td>{{ type_of_material.price }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar nuevo Maquilero{% endblock %}
+
+{% block content %}
+    <h1>Registro</h1>
+    <form method="post" action="{{ url_for('position.register') }}">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.name_position.label }}
+            {{ form.name_position(class="form-control") }}
+            {% if form.name_position.errors %}
+                {% for error in form.name_position.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.machinery_in_use.label }}
+            {{ form.machinery_in_use(class="form-control") }}
+            {% if form.machinery_in_use.errors %}
+                {% for error in form.machinery_in_use.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        </div>
+    </form>
+{% endblock %}

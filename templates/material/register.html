@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar nuevo Maquilero{% endblock %}
+
+{% block content %}
+    <h1>Registro</h1>
+    <form method="post" action="{{ url_for('material.register') }}">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.name_material.label }}
+            {{ form.name_material(class="form-control") }}
+            {% if form.name_material.errors %}
+                {% for error in form.name_material.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.price.label }}
+            {{ form.price(class="form-control") }}
+            {% if form.price.errors %}
+                {% for error in form.price.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        </div>
+    </form>
+{% endblock %}

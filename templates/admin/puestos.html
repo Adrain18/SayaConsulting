@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}
+Puestos
+{% endblock %}
+
+{% block content %}
+<h1>Lista de Puestos</h1>
+<li class="">
+    <a class="" href="{{ url_for('position.register') }}">Registrar Puesto</a>
+</li>
+<table>
+    <tr>
+        <th>ID de Puesto</th>
+        <th>Nombre de Puesto</th>
+        <th>Maquinaria a Cargo</th>
+        <th>Opciones</th>
+    </tr>
+    {% for position in positions %}
+    <tr>
+        <td>{{ position.id_position }}</td>
+        <td>{{ position.name_position }}</td>
+        <td>{{ position.machinery_in_use }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

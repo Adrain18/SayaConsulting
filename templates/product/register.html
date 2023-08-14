@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block title %}Registrar nuevo Proveedor{% endblock %}
+
+{% block content %}
+    <h1>Registro</h1>
+    <form method="post" action="{{ url_for('product.register') }}">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.name_product.label }}
+            {{ form.name_product(class="form-control") }}
+            {% if form.name_product.errors %}
+                {% for error in form.name_product.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_material.label }}
+            <select class="form-control" name="{{ form.id_material.name }}">
+                <option value="">Seleccionar tipo de material...</option>
+                {% for id_material, name_material in form.id_material.choices %}
+                    <option value="{{ id_material }}">{{ name_material }}</option>
+                {% endfor %}
+            </select>
+            {% if form.id_material.errors %}
+                {% for error in form.id_material.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.size.label }}
+            {{ form.size(class="form-control") }}
+            {% if form.size.errors %}
+                {% for error in form.size.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.price.label }}
+            {{ form.price(class="form-control") }}
+            {% if form.price.errors %}
+                {% for error in form.price.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">{{ form.submit.label }}</button>
+        </div>
+    </form>
+{% endblock %}

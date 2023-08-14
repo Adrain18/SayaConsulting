@@ -1,0 +1,56 @@
+
+{% extends 'home.html' %}
+
+{% block content %}
+
+<div class="table-wrapper">
+    
+    <div class="row">
+        <div class="col-md-12">
+          <a href="{{ url_for('addUser') }}" title="Registrar nuevo Usuario"
+            class="btn btn-primary btn-lg btn-block btn-sm mb-2" style="float:right">
+            <i class="bi bi-person-fill"></i>
+            Nuevo Registro
+          </a>
+        </div>
+      </div>
+
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Nombre Completo</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in miData %}
+                <tr id="Registro_{{ user.id }}">
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.fullname }}</td>
+                    <td width="300">
+                        <span style="display: flex; justify-content:space-between;">
+                            <a href="{{ url_for('formViewUpdate', id = user.id ) }}" class="btn btn-info btn-sm"
+                                tooltip="Actualizar Registro">
+                                <i class="bi bi-arrow-clockwise"></i>
+                                Actualizar
+                            </a>
+                            <a href="{{ url_for('formViewBorrarUsuario', id = user.id ) }}" class="btn btn-danger btn-sm"
+                                tooltip="Eliminar Registro">
+                                <i class="bi bi-trash3"></i>
+                                Eliminar
+                            </a>
+                        </span>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
+
+   

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}
+Maquileros
+{% endblock %}
+
+{% block content %}
+<h1>Lista de Maquileros</h1>
+    <li class="">
+        <a class="" href="{{ url_for('maquilero.register') }}">Registrar Maquilero</a>
+    </li>
+    <table>
+      <tr>
+          <th>ID de Maquilero</th>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Dirección</th>
+          <th>Acciones</th>
+      </tr>
+      {% for maquileros in maquilero %}
+      <tr>
+          <td>{{ maquileros.id_maquilero }}</td>
+          <td>{{ maquileros.name }}</td>
+          <td>{{ maquileros.ape_pat }}</td>
+          <td>{{ maquileros.ape_mat }}</td>
+          <td>{{ maquileros.direction }}</td>
+      </tr>
+      {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,123 @@
+<!--register.html-->
+{% extends 'base.html' %}
+
+{% block title %}Editar Usuario alo ijo{% endblock %}
+
+{% block content %}
+    <h1>Editar</h1>
+    <form method="post" action="{{ url_for('user.profile') }}" enctype="multipart/form-data">
+        {{ form.csrf_token }}
+        <div>
+            {{ form.username.label }}
+            {{ form.username(class="form-control") }}
+            {% if form.username.errors %}
+                {% for error in form.username.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.email.label }}
+            {{ form.email(class="form-control") }}
+            {% if form.email.errors %}
+                {% for error in form.email.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+            {% if form.password.errors %}
+                {% for error in form.password.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.password_confirm.label }}
+            {{ form.password_confirm(class="form-control") }}
+            {% if form.password_confirm.errors %}
+                {% for error in form.password_confirm.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.name.label }}
+            {{ form.name(class="form-control") }}
+            {% if form.name.errors %}
+                {% for error in form.name.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_pat.label }}
+            {{ form.ape_pat(class="form-control") }}
+            {% if form.ape_pat.errors %}
+                {% for error in form.ape_pat.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.ape_mat.label }}
+            {{ form.ape_mat(class="form-control") }}
+            {% if form.ape_mat.errors %}
+                {% for error in form.ape_mat.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.direction.label }}
+            {{ form.direction(class="form-control") }}
+            {% if form.direction.errors %}
+                {% for error in form.direction.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.image.label }}
+            {{ form.image(class="form-control") }}
+            {% if form.image.errors %}
+                {% for error in form.image.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_position.label }}
+            <select class="form-control" name="{{ form.id_position.name }}">
+                <option value="">Seleccionar posición...</option>
+                {% for id_position, name_position in form.id_position.choices %}
+                    <option value="{{ id_position }}">{{ name_position }}</option>
+                {% endfor %}
+            </select>
+            {% if form.id_position.errors %}
+                {% for error in form.id_position.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            {{ form.id_role.label }}
+            <select class="form-control" name="{{ form.id_role.name }}">
+                <option value="">Seleccionar rol...</option>
+                {% for id_role, name_role in form.id_role.choices %}
+                    <option value="{{ id_role }}">{{ name_role }}</option>
+                {% endfor %}
+            </select>
+            {% if form.id_role.errors %}
+                {% for error in form.id_role.errors %}
+                    <p>{{ error }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </div>
+    </form>
+{% endblock %}

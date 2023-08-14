@@ -1,0 +1,47 @@
+<!--register.html-->
+{% extends 'home.html' %}
+
+{% block content %}
+
+
+<section>
+    <h2>
+        <a href="{{ url_for('admin.usuario') }}" class="left" title="Volver"><i class="bi bi-arrow-left-circle"></i></a>
+        Actualizar Información de Usuario
+        <hr>
+    </h2>
+
+    {% if (dataInfo) %}
+      <form action="{{ url_for('formActualizarUser', idUser = dataInfo.id ) }}" method="POST" class="mb-3" autocomplete="off" enctype="multipart/form-data">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input type="text" class="form-control" name="id" value="{{ dataInfo.id }}" required hidden>
+        
+        <div class="row">
+            <div class="col">
+                <label for="username">Username</label>
+                <input type="text" name="username" value="{{ dataInfo.username }}" class="form-control">
+            </div>
+            <div hidden="true" class="col">
+                <label hidden="true" for="password">Contraseña</label>
+                <input type="text" hidden="true" name="password" value="{{ dataInfo.password }}" class="form-control">
+            </div>
+            <div class="col">
+                <label for="fullname">Nombre Completo</label>
+                <input type="text" name="fullname" value="{{ dataInfo.fullname }}" class="form-control">
+            </div>
+        </div>
+        <hr>
+        <input class="button-primary mt-3 btn btn-info btn-block bold" type="submit" value="Guardar Actualización">
+    </form>
+
+      {% else %}
+      <div class="col-12">
+          <h2 class="text-center">
+              No existe el Usuario
+          </h2>
+      </div>
+{% endif %}
+
+</section>
+
+{% endblock %}
